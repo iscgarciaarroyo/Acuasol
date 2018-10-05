@@ -42,7 +42,7 @@
                 VerticalOptions="Center">
             </Label>
             <Switch
-                IsToggled="{Binding recordar, Mode=TwoWay}"
+                IsToggled="{Binding Recordar, Mode=TwoWay}"
                 HorizontalOptions="End">
             </Switch>
                     </StackLayout>
@@ -54,20 +54,22 @@
                     VerticalOptions="CenterAndExpand">
                 </Label>
             <ActivityIndicator
-                IsRunning="{Binding run, Mode=TwoWay}"
+                IsRunning="{Binding Run, Mode=TwoWay}"
                 VerticalOptions="CenterAndExpand">
             </ActivityIndicator>
             <Button
                 BackgroundColor="Navy"
                 BorderRadius="25"
-                Command="{Binding ingresar, Mode=TwoWay}"
+                Command="{Binding Ingresar, Mode=TwoWay}"
+                IsEnabled="{Binding Habilitado, Mode=TwoWay}"
                 Text="Ingresar"
                 TextColor="White">
             </Button>
             <Button
                 BackgroundColor="DarkGreen"
                 BorderRadius="25"
-                Command="{Binding registrar, Mode=TwoWay}"
+                Command="{Binding Registrar, Mode=TwoWay}"
+                IsEnabled="{Binding Habilitado, Mode=TwoWay}"
                 Text="Registrarme"
                 TextColor="White">
             </Button>
