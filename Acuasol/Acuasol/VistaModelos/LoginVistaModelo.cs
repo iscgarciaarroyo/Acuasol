@@ -3,11 +3,13 @@
     using GalaSoft.MvvmLight.Command;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Vistas;
 
     public class LoginVistaModelo : BaseVistaModelo
     {
         #region Attributo
         private string password;
+        private string email;
         private bool run;
         private bool habilitado;
         #endregion  
@@ -15,8 +17,8 @@
         #region Propiedades
         public string Email
         {
-            get;
-            set;
+            get { return this.email; }
+            set { AjusteValor(ref this.email, value); }
         }
 
         public string Password
@@ -50,6 +52,9 @@
         {
             this.Recordar = true;
             this.habilitado = true;
+
+            this.Email = "agarcia@bism.com.mx";
+            this.Password = "agarcia";
         }
         #endregion
 
@@ -103,12 +108,11 @@
             this.Run = false;
             this.Habilitado = true;
 
-            await Application.Current.MainPage.DisplayAlert("" +
-                "OK"
-                , "Bienvenido"
-                , "Aceptar"
-                );
-            return;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            MainVistaModelo.ObtenerInstancia().Home = new HomeVistaModelo();
+            await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
         }
 
         public ICommand registrar

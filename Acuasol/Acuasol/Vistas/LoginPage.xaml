@@ -6,16 +6,10 @@
              Title="Login">
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
-        <StackLayout Padding="10,20">
-            <Label 
-                FontAttributes="Bold"
-                FontSize="Large"
-                HorizontalOptions="Center"
-                Text="Acuasol">
-            </Label>
-            <Image
-                Source="iconoB"
-                WidthRequest="100">
+            <StackLayout Padding="10,20">
+                <Image
+                Source="acuasol"
+                WidthRequest="300">
             </Image>
                 <Label 
                 Text="E-Mail">
