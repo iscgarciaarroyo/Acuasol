@@ -1,7 +1,18 @@
 ﻿namespace Acuasol.VistaModelos
 {
+    using Modelos;
+    using System.Collections.Generic;
+
     public class MainVistaModelo
     {
+        #region Propiedad
+        public List<Land> listaPaises
+        {
+            get;
+            set;
+        }
+        #endregion
+
         #region vistaModelo
         public LoginVistaModelo Login
         {
@@ -10,6 +21,12 @@
         }
 
         public HomeVistaModelo Home
+        {
+            get;
+            set;
+        }
+
+        public LanVistaModelo Lan
         {
             get;
             set;

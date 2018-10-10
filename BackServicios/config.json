@@ -1,0 +1,11 @@
+{
+    "Port" : 9000,
+    "Datos" :  
+    {
+        "server": "127.0.0.1",
+        "database": "Acuasol",
+        "user": "sa",
+        "password": "S0p0rt3",
+        "port":1433
+    }
+}

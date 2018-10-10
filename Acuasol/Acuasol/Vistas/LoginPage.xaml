@@ -73,6 +73,10 @@
                 <Image
                     Source="fblogo"
                     WidthRequest="80">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LogeoPorFacebook}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                 </Image>
                 <Image
                     Source="twlogo"
