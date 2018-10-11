@@ -63,14 +63,14 @@ namespace Acuasol.Modelos
         [JsonProperty(PropertyName = "numericCode")]
         public string NumericCode { get; set; }
 
-        //[JsonProperty(PropertyName = "currencies")]
-        //public List<Currency> Currencies { get; set; }
+        [JsonProperty(PropertyName = "currencies")]
+        public List<Moneda> Currencies { get; set; }
 
-        //[JsonProperty(PropertyName = "languages")]
-        //public List<Language> Languages { get; set; }
+        [JsonProperty(PropertyName = "languages")]
+        public List<Lenguas> Languages { get; set; }
 
-        //[JsonProperty(PropertyName = "translations")]
-        //public Translations Translations { get; set; }
+        [JsonProperty(PropertyName = "translations")]
+        public Traducciones Translations { get; set; }
 
         [JsonProperty(PropertyName = "flag")]
         public string Flag { get; set; }

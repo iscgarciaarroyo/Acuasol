@@ -1,7 +1,6 @@
 ﻿namespace Acuasol.VistaModelos
 {
     using Modelos;
-    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
 
@@ -9,6 +8,8 @@
     {
         #region Atributos
         private ObservableCollection<Border> borders;
+        private ObservableCollection<Moneda> currencies;
+        private ObservableCollection<Lenguas> lenguas;
         #endregion
 
         #region Propiedades
@@ -22,6 +23,16 @@
             get { return this.borders; }
             set { this.AjusteValor(ref this.borders, value); }
         }
+        public ObservableCollection<Moneda> Currencies
+        {
+            get { return this.currencies; }
+            set { this.AjusteValor(ref this.currencies, value); }
+        }
+        public ObservableCollection<Lenguas> Lenguas
+        {
+            get { return this.lenguas; }
+            set { this.AjusteValor(ref this.lenguas, value); }
+        }
         #endregion
 
         #region Constructor
@@ -29,6 +40,8 @@
         {
             this.Lan = lan;
             this.CargaBorders();
+            this.currencies = new ObservableCollection<Moneda>(this.Lan.Currencies);
+            this.lenguas = new ObservableCollection<Lenguas>(this.Lan.Languages);
         }
         #endregion
 

@@ -103,11 +103,11 @@
                 CallingCodes = l.CallingCodes,
                 Capital = l.Capital,
                 Cioc = l.Cioc,
-                //Currencies = l.Currencies,
+                Currencies = l.Currencies,
                 Demonym = l.Demonym,
                 Flag = l.Flag,
                 Gini = l.Gini,
-                //Languages = l.Languages,
+                Languages = l.Languages,
                 Latlng = l.Latlng,
                 Name = l.Name,
                 NativeName = l.NativeName,
@@ -118,7 +118,7 @@
                 Subregion = l.Subregion,
                 Timezones = l.Timezones,
                 TopLevelDomain = l.TopLevelDomain,
-                //Translations = l.Translations,
+                Translations = l.Translations,
             });
         } 
         #endregion
