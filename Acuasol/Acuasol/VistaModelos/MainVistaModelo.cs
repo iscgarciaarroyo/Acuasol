@@ -11,6 +11,13 @@
             get;
             set;
         }
+
+        public TokenRespuesta Token
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region vistaModelo

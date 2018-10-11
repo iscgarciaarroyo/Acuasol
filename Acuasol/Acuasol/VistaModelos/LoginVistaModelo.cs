@@ -4,9 +4,14 @@
     using System.Windows.Input;
     using Xamarin.Forms;
     using Vistas;
+    using Servicios;
 
     public class LoginVistaModelo : BaseVistaModelo
     {
+        #region Servicios
+        private ApiServicio apiServicio;
+        #endregion
+
         #region Attributo
         private string password;
         private string email;
@@ -50,11 +55,11 @@
         #region Constructor
         public LoginVistaModelo()
         {
+            this.apiServicio = new ApiServicio();
+
             this.Recordar = true;
             this.habilitado = true;
 
-            this.Email = "agarcia@bism.com.mx";
-            this.Password = "agarcia";
         }
         #endregion
 
@@ -92,27 +97,64 @@
             this.Run = true;
             this.Habilitado = false;
 
-            if (this.Email != "agarcia@bism.com.mx" || this.Password != "agarcia")
+            var checaConect = await this.apiServicio.CheckConnection();
+
+            if (!checaConect.Exito)
             {
                 this.Run = false;
                 this.Habilitado = true;
+
                 await Application.Current.MainPage.DisplayAlert("" +
                     "Error"
-                    , "E-Mail o Password son incorrectos"
+                    , checaConect.Mensaje
+                    , "Aceptar"
+                    );
+                return;
+            }
+
+            var token = await this.apiServicio.GetToken(
+                "https://acuasolapi.azurewebsites.net"
+                , this.Email
+                , this.Password
+                );
+
+            if (token == null)
+            {
+                this.Run = false;
+                this.Habilitado = true;
+
+                await Application.Current.MainPage.DisplayAlert("" +
+                    "Error"
+                    , "Ocurrio un error al intentar acceder, favor de intentar mas tarde"
+                    , "Aceptar"
+                    );
+                return;
+            }
+
+            if (string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.Run = false;
+                this.Habilitado = true;
+
+                await Application.Current.MainPage.DisplayAlert("" +
+                    "Error"
+                    , token.ErrorDescription
                     , "Aceptar"
                     );
                 this.Password = string.Empty;
                 return;
             }
 
+            var mainVistaModelo = MainVistaModelo.ObtenerInstancia();
+            mainVistaModelo.Token = token;
+            mainVistaModelo.Home = new HomeVistaModelo();
+            await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+
             this.Run = false;
             this.Habilitado = true;
 
             this.Email = string.Empty;
             this.Password = string.Empty;
-
-            MainVistaModelo.ObtenerInstancia().Home = new HomeVistaModelo();
-            await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
         }
 
         public ICommand registrar
