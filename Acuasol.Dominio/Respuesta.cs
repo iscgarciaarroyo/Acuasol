@@ -1,4 +1,4 @@
-﻿namespace Acuasol.Modelos
+﻿namespace Acuasol.Dominio
 {
     public class Respuesta
     {
